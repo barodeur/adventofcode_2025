@@ -1,13 +1,9 @@
-use std::{
-    io::{self, BufRead, BufReader},
-    str::FromStr,
-    sync::LazyLock,
-};
-
+use color_eyre::{eyre, Result};
 use regex::Regex;
+use std::{io::BufRead, str::FromStr, sync::LazyLock};
 
 #[derive(Debug)]
-enum Rotation {
+pub enum Rotation {
     Left(usize),
     Right(usize),
 }
@@ -36,28 +32,21 @@ impl FromStr for Rotation {
     }
 }
 
-fn main() {
-    let buffer = BufReader::new(io::stdin());
-    let rotations = buffer
-        .lines()
-        .map_while(Result::ok)
-        .map(|line| Rotation::from_str(line.as_str()).unwrap());
-
-    let mut position = 50;
-    let mut count = 0;
-    for rotation in rotations {
-        println!("position = {:?}; rotation = {:?}", position, rotation);
-
-        position = match rotation {
-            Rotation::Left(angle) => (position + 100 - (angle % 100)) % 100,
-            Rotation::Right(angle) => (position + angle) % 100,
-        };
-
-        if position == 0 {
-            count += 1;
+impl Rotation {
+    pub fn angle(&self) -> isize {
+        match self {
+            Rotation::Right(a) => *a as isize,
+            Rotation::Left(a) => -(*a as isize),
         }
     }
 
-    println!("Final position: {}", position);
-    println!("Count: {}", count);
+    pub fn iter_from(input: impl BufRead) -> impl Iterator<Item = Result<Rotation>> {
+        input.lines().map(|line| {
+            let line = line.map_err(|e| eyre::eyre!("Failed to read line: {}", e))?;
+            let rotation = line
+                .parse::<Rotation>()
+                .map_err(|err| eyre::eyre!("Failed to parse rotation '{}': {}", line, err))?;
+            Ok(rotation)
+        })
+    }
 }
