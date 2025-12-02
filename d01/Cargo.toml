@@ -14,3 +14,4 @@ regex = "1.12.2"
 color-eyre = "0.6"
 tracing = "0.1.43"
 tracing-subscriber = "0.3.22"
+aoc_runner = { path = "../aoc_runner" }

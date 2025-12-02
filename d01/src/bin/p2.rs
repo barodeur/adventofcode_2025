@@ -1,13 +1,12 @@
+use aoc_runner::resolver;
 use color_eyre::Result;
 use d01::rotation::Rotation;
-use std::io::stdin;
+use std::io::BufRead;
 use tracing::debug;
 
-fn main() -> Result<()> {
-    color_eyre::install()?;
-    tracing_subscriber::fmt::init();
-
-    let rotations = Rotation::iter_from(stdin().lock());
+#[resolver]
+fn main(reader: impl BufRead) -> Result<u64> {
+    let rotations = Rotation::iter_from(reader);
 
     let mut position = 50;
     let mut count = 0;
@@ -48,7 +47,5 @@ fn main() -> Result<()> {
         position = new_position;
     }
 
-    println!("{}", count);
-
-    Ok(())
+    Ok(count as u64)
 }
