@@ -1,3 +1,9 @@
+[[bin]]
+name = "p1"
+
+[[bin]]
+name = "p2"
+
 [package]
 name = "d02"
 version = "0.1.0"
@@ -7,3 +13,4 @@ edition = "2021"
 color-eyre = "0.6"
 tracing = "0.1.43"
 tracing-subscriber = "0.3.22"
+test-log = {version = "0.2", features = ["trace"]}
