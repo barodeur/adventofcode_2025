@@ -1,8 +1,10 @@
 [[bin]]
-name = "p1"
+name = "d01p1"
+path = "src/bin/p1.rs"
 
 [[bin]]
-name = "p2"
+name = "d01p2"
+path = "src/bin/p2.rs"
 
 [package]
 name = "d01"
