@@ -1,11 +1,12 @@
-use aoc_runner::resolver;
+use aoc_runner::generate_main;
 use color_eyre::Result;
 use d01::rotation::Rotation;
 use std::io::BufRead;
 use tracing::debug;
 
-#[resolver]
-fn main(reader: impl BufRead) -> Result<u64> {
+generate_main!(solve);
+
+fn solve(reader: impl BufRead) -> Result<u64> {
     let rotations = Rotation::iter_from(reader);
 
     let mut position = 50;

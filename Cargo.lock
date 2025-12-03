@@ -80,18 +80,8 @@ dependencies = [
 name = "aoc_runner"
 version = "0.1.0"
 dependencies = [
- "aoc_runner_macro",
  "color-eyre",
  "tracing-subscriber",
-]
-
-[[package]]
-name = "aoc_runner_macro"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]

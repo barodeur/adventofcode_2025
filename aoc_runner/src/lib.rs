@@ -1,22 +1,23 @@
-use color_eyre::Result;
-use std::io::{stdin, BufRead};
+use color_eyre::{self, Result};
 
-pub use color_eyre;
-pub use tracing_subscriber;
-
-pub use aoc_runner_macro::resolver;
-
-pub fn run<F, T>(solve: F) -> Result<()>
-where
-    F: FnOnce(Box<dyn BufRead>) -> Result<T>,
-    T: std::fmt::Display,
-{
+pub fn init() -> Result<()> {
     color_eyre::install()?;
     tracing_subscriber::fmt::init();
-
-    let reader = Box::new(stdin().lock());
-    let result = solve(reader)?;
-    println!("{}", result);
-
     Ok(())
+}
+
+/// Generates a main function that calls the provided solve function.
+#[macro_export]
+macro_rules! generate_main {
+    ($solve:ident) => {
+        fn main() -> Result<()> {
+            $crate::init()?;
+
+            let reader = std::io::stdin().lock();
+            let result = $solve(reader)?;
+            println!("{}", result);
+
+            Ok(())
+        }
+    };
 }

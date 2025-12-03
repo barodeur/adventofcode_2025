@@ -6,4 +6,3 @@ edition = "2021"
 [dependencies]
 color-eyre = "0.6"
 tracing-subscriber = "0.3.22"
-aoc_runner_macro = { path = "../aoc_runner_macro" }
