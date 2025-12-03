@@ -14,3 +14,15 @@ fn solve(reader: impl BufRead) -> Result<u64> {
 fn is_invalid(number: u64) -> bool {
     has_n_repetitions(number, 2)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test_log::test]
+    fn test_example() {
+        let reader = std::io::Cursor::new(include_bytes!("../../inputs/example.txt"));
+        let result = solve(reader).unwrap();
+        assert_eq!(result, 1227775554);
+    }
+}
