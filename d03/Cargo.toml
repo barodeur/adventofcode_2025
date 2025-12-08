@@ -1,3 +1,11 @@
+[[bin]]
+name = "d03p1"
+path = "src/bin/p1.rs"
+
+[[bin]]
+name = "d03p2"
+path = "src/bin/p2.rs"
+
 [package]
 name = "d03"
 version = "0.1.0"
