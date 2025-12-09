@@ -3,6 +3,14 @@ name = "d05"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "d05p1"
+path = "src/bin/p1.rs"
+
+[[bin]]
+name = "d05p2"
+path = "src/bin/p2.rs"
+
 [dependencies]
 aoc_runner = { path = "../aoc_runner" }
 eyre = "0.6"
