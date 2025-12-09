@@ -71,4 +71,12 @@ impl Room {
             .filter(|pos| self.neighbors_with_roll_count(pos) < 4)
             .collect()
     }
+
+    pub fn remove_accessible_rolls(&mut self) -> usize {
+        let positions = self.accessible_roll_positions();
+        for pos in &positions {
+            self.0[pos.i][pos.j] = None;
+        }
+        positions.len()
+    }
 }
