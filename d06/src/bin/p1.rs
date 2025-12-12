@@ -59,7 +59,7 @@ mod tests {
 
     #[test_log::test]
     fn test_example() {
-        let reader = std::io::Cursor::new(include_bytes!("../inputs/example.txt"));
+        let reader = std::io::Cursor::new(include_bytes!("../../inputs/example.txt"));
         let result = solve(reader).unwrap();
         assert_eq!(result, 4277556);
     }
