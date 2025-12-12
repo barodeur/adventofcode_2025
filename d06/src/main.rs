@@ -19,7 +19,7 @@ fn solve(reader: impl BufRead) -> Result<u64> {
             .map(|p| p.parse::<u64>())
             .try_collect()
             .map_err(|_| eyre!("Failed to parse line"));
-        // debug!(?parsed_parts_as_number);
+
         if let Ok(ns) = parsed_parts_as_number {
             numbers.push(ns);
             continue;
