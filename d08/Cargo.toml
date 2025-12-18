@@ -1,0 +1,13 @@
+[package]
+name = "d08"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aoc_runner = { path = "../aoc_runner" }
+eyre = "0.6"
+tracing = "0.1.43"
+itertools = "0.14"
+
+[dev-dependencies]
+test-log = {version = "0.2", features = ["trace"]}
